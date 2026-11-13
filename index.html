@@ -98,9 +98,63 @@
     .section-heading.center { margin-left: auto; margin-right: auto; text-align: center; }
     .section-heading.center .eyebrow { justify-content: center; }
     .section-heading p { color: var(--muted); margin-bottom: 0; }
-
     .services { background: var(--paper); }
-    .service-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+    .service-grid {
+        display: grid;
+        grid-template-columns: repeat(
+            auto-fit,
+            minmax(min(100%, 280px), 1fr)
+        );
+
+        gap: 24px;
+        width: 100%;
+        align-items: stretch;
+    }
+
+    /* Tarjetas */
+
+    .service-grid > article {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    /* Imágenes */
+
+    .service-grid > article img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+    }
+
+    /* ==========================================
+      TABLETS Y PANTALLAS MEDIANAS
+    ========================================== */
+
+    @media (max-width: 1023px) {
+        .service-grid {
+            grid-template-columns: minmax(0, 1fr);
+            gap: 22px;
+        }
+    }
+
+    /* ==========================================
+      CELULARES
+    ========================================== */
+
+    @media (max-width: 600px) {
+        .service-grid {
+            gap: 18px;
+        }
+
+        .service-grid > article img {
+            aspect-ratio: 16 / 10;
+        }
+    }
+
     .service-card { overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: white; }
     .service-photo { height: 285px; }
     .service-content { padding: 30px 31px 32px; }
@@ -205,8 +259,8 @@
       <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
       <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
         <a href="#servicios">Servicios</a>
-        <a href="#sobre-mi">Sobre mí</a>
-        <a href="#enfoque">Mi enfoque</a>
+        <a href="#sobre-mi">Sobre nosotros</a>
+        <a href="#enfoque">Nuestro enfoque</a>
         <a href="#preguntas">Preguntas</a>
       </nav>
       <a class="nav-cta" href="#contacto">Consultar / reservar <span aria-hidden="true">↗</span></a>
@@ -256,28 +310,42 @@
             <div class="service-content">
               <span class="service-label">Cuidado de los pies</span>
               <h3>Podología</h3>
-              <p>Atención orientada al cuidado, la higiene y el mantenimiento de los pies, con una mirada personalizada para cada persona.</p>
+              <p>Atención especializada en tratamientos para patologías, cuidados y mantenimiento de los pies, con una mirada personalizada.</p>
               <ul>
-                <li>Cuidado de uñas y piel</li>
-                <li>Evaluación de necesidades del pie</li>
-                <li>Orientación para hábitos de cuidado</li>
+                <li>Tratamiento para hongos, durezas, uñas encarnadas y más</li>
+                <li>Especializados en pacientes diabéticos</li>
+                <li>Atención profesional, respetuosa y personalizada</li>
+              </ul>
+              <a class="text-link" href="#contacto">Consultar por podología <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+          <article class="service-card">
+            <img class="service-photo" src="images/analisisydiagnostico.jpg" alt="Profesional realizando cuidado podológico" loading="lazy">
+            <div class="service-content">
+              <span class="service-label">Análisis y diagnóstico</span>
+              <h3>Estudio de la piasda y plantillas</h3>
+              <p>Evaluacion de la caminata, para detectar sobrecargas, desviaciones posturales y diseñar plantillas personalizadas para el acompañamiento diario.</p>
+              <ul>
+                <li>Evaluacion 100% personalizada</li>
+                <li>Para deportistas, trabajadores, etc.</li>
+                <li>prevencion y alivio de dolores corporales.</li>
                 <li>Plantillas ortopéticas</li>
               </ul>
               <a class="text-link" href="#contacto">Consultar por podología <span aria-hidden="true">→</span></a>
             </div>
           </article>
           <article class="service-card">
-            <img class="service-photo" src="https://260ebd89a1ad2bf6e3e6.cdn6.editmysite.com/uploads/b/260ebd89a1ad2bf6e3e6d1222256ac3d2f3ce9d65c2373b598c58df63b3b1f7e/cedar1_1767367701.png?optimize=medium&width=2400" alt="Ambiente de relajación y bienestar holístico" loading="lazy">
+            <img class="service-photo" src="images/reflexologia.jpg" alt="reflexologia holística" loading="lazy">
             <div class="service-content">
-              <span class="service-label">Pausa y conexión</span>
-              <h3>Bienestar holístico</h3>
-              <p>Un espacio de pausa y relajación para dedicarte tiempo, escuchar el cuerpo y favorecer una sensación general de bienestar.</p>
+              <span class="service-label">Alivio y descanso</span>
+              <h3>Reflexología Holística </h3>
+              <p>Un espacio pensado para aliviar dolores, liberar tensiones acumuladas y devolverle la liviandad a tus pies a todo tu cuerpo.</p>
               <ul>
-                <li>Espacios de relajación</li>
-                <li>Prácticas de bienestar integral</li>
-                <li>Atención respetuosa y personalizada</li>
+                <li>Alivio de dolores y sobrecargas</li>
+                <li>Liberacion de tensiones mediante puntos reflejos</li>
+                <li>Atencion respetuosa y personalizada</li>
               </ul>
-              <a class="text-link" href="#contacto">Consultar por holística <span aria-hidden="true">→</span></a>
+              <a class="text-link" href="#contacto">Consultar por reflexología <span aria-hidden="true">→</span></a>
             </div>
           </article>
         </div>
@@ -293,11 +361,11 @@
         <div class="about-copy">
           <span class="eyebrow">Un espacio cercano</span>
           <h2>Atención con calidez, respeto y dedicación</h2>
-          <p>Creo que el cuidado empieza por escuchar. Por eso, cada encuentro busca comprender qué necesitás y ofrecerte una experiencia amable, clara y adaptada a vos.</p>
-          <p>La propuesta reúne el cuidado podológico y prácticas de bienestar holístico en un mismo espacio, respetando los objetivos y las necesidades de cada persona.</p>
+          <p>Creemos que el cuidado empieza por escuchar. Por eso, nuestro equipo trabaja para comprender las necesidades de cada persona y ofrecer una experiencia amable, profesional y personalizada.</p>
+          <p>En nuestro centro reunimos servicios de podología y prácticas de bienestar holístico en un mismo espacio, brindando una atención integral, respetuosa y adaptada a los objetivos de cada persona.</p>
           <div class="about-signature">
             <span class="signature-line"></span>
-            <div><strong>Liliana</strong><small>Podología · Bienestar holístico</small></div>
+            <div><strong>Centro Podológico y Holístico San Miguel Arcángel</strong><small>Podología · Bienestar holístico</small></div>
           </div>
         </div>
       </div>
@@ -393,7 +461,7 @@
     <div class="container">
       <div class="footer-row">
         <a class="brand" href="#inicio"><span class="brand-mark"><img src="images/logosinfondo.png"></span><span class="brand-name">Centro Podológico y Holístico<small>San Miguel Arcángel</small></span></a>
-        <div class="footer-links"><a href="#servicios">Servicios</a><a href="#sobre-mi">Sobre mí</a><a href="#contacto">Contacto</a></div>
+        <div class="footer-links"><a href="#servicios">Servicios</a><a href="#sobre-mi">Sobre nosotros</a><a href="#contacto">Contacto</a></div>
         <p>© <span id="year"></span> San Miguel Arcangel. Todos los derechos reservados.</p>
       </div>
       <p class="disclaimer">La información de este sitio es orientativa. Los servicios y prácticas deben ajustarse a la formación, habilitación y alcance profesional de quien los brinda. Las propuestas holísticas no reemplazan la atención médica ni los tratamientos indicados por profesionales de la salud.</p>
